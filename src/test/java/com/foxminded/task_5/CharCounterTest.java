@@ -59,7 +59,7 @@ public class CharCounterTest {
     }
 
     @Test
-    void countCharsSNull() {
+    void countCharsNull() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             charCounter.countChar(null);
         });
