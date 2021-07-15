@@ -52,7 +52,7 @@ public class CalculatorTest {
         cashMap.put('w', 1);
         cashMap.put('r', 1);
         cashMap.put('d', 1);
-        Cash expected = new Cash(cashMap, CHARS_WITH_LOWER_KEYS);
+        Cash expected = new Cash(cashMap, CHARS_WITH_UPPER_KEYS);
         assertEquals(expected, actual);
     }
 
@@ -70,7 +70,7 @@ public class CalculatorTest {
         cashMap.put('w', 1);
         cashMap.put('r', 1);
         cashMap.put('d', 1);
-        Cash expected = new Cash(cashMap, CHAR_WITH_DIGITS_AND_SYMBOLS_LOWER_KEYS);
+        Cash expected = new Cash(cashMap, CHAR_WITH_DIGITS_AND_SYMBOLS_UPPER_KEYS);
         assertEquals(expected, actual);
     }
 

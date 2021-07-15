@@ -1,15 +1,17 @@
 package com.foxminded.task_5;
 
 import java.util.HashMap;
-import java.util.Locale;
 
 public class Calculator {
+    private static final String ARGUMENT_EXCEPTION_TEXT = "Null input is not allowed";
+
     public Cash fillMap(String word) {
         if (word == null) {
-            throw new IllegalArgumentException("Null input is not allowed");
+            throw new IllegalArgumentException(ARGUMENT_EXCEPTION_TEXT);
         }
         HashMap<Character, Integer> cashMap = new HashMap<>();
-        word = word.toLowerCase(Locale.ROOT);
+        String cashWord = word;
+        word = word.toLowerCase();
         for (var i = 0; i < word.length(); i++) {
             if (cashMap.containsKey(word.charAt(i))) {
                 cashMap.put(word.charAt(i), cashMap.get(word.charAt(i)) + 1);
@@ -17,6 +19,6 @@ public class Calculator {
                 cashMap.put(word.charAt(i), 1);
             }
         }
-        return new Cash(cashMap, word);
+        return new Cash(cashMap, cashWord);
     }
 }

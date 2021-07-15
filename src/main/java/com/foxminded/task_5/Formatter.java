@@ -1,5 +1,7 @@
 package com.foxminded.task_5;
 
+import java.util.Locale;
+
 public class Formatter {
     private static final String QUOTE = "\"";
     private static final String SPACE = " ";
@@ -9,15 +11,19 @@ public class Formatter {
     public String charFormatter(Cash cash) {
         var wordOut = new StringBuilder();
         var buffer = "";
-        for (var i = 0; i < cash.getCashWord().length(); i++) {
-            if (!buffer.contains(String.valueOf(cash.getCashWord().charAt(i)))) {
-                buffer += cash.getCashWord().charAt(i);
+        String cashWord = cash.getCashWord().toLowerCase(Locale.ROOT);
+        for (var i = 0; i < cashWord.length(); i++) {
+            if (!buffer.contains(String.valueOf(cashWord.charAt(i)))) {
+                buffer += cashWord.charAt(i);
             }
         }
         for (var i = 0; i < buffer.length(); i++) {
             wordOut.append(QUOTE + buffer.charAt(i));
             wordOut.append(QUOTE + SPACE + DASH + SPACE);
             wordOut.append(cash.getCashMap().get(buffer.charAt(i)) + NEW_LINE);
+        }
+        if (!cash.getCashWord().isEmpty()) {
+            wordOut.insert(0, cash.getCashWord() + NEW_LINE);
         }
         return wordOut.toString();
     }

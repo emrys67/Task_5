@@ -9,7 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class FormatterTest {
     private Formatter formatter;
     private Calculator calculator;
-    private static final String CHAR_WITH_DIGITS_AND_SYMBOLS = """
+    private static final String CHARS_WITH_DIGITS_AND_SYMBOLS = """
+            Hello1$$ WO1211)rld!
             "h" - 1
             "e" - 1
             "l" - 3
@@ -25,6 +26,7 @@ public class FormatterTest {
             "!" - 1
             """;
     private static final String COUNT_CHARS_WITH_UPPER_KEYS = """
+            Hello WOrld!
             "h" - 1
             "e" - 1
             "l" - 3
@@ -36,6 +38,7 @@ public class FormatterTest {
             "!" - 1
             """;
     private static final String COUNT_CHARS_WITH_LOWER_KEYS = """
+            hello world!
             "h" - 1
             "e" - 1
             "l" - 3
@@ -46,6 +49,9 @@ public class FormatterTest {
             "d" - 1
             "!" - 1
             """;
+    private static final String WORD_WITH_DIGITS_AND_SYMBOLS = "Hello1$$ WO1211)rld!";
+    private static final String WORD_WITH_UPPER_KEYS = "Hello WOrld!";
+    private static final String WORD_WITH_LOWER_KEYS = "hello world!";
     private static final String CHARS_NULL = "Null input is not allowed";
     private static final String EMPTY = "";
 
@@ -74,30 +80,30 @@ public class FormatterTest {
 
     @Test
     void countCharsSWithUpperKeys() {
-        Cash cash = calculator.fillMap("Hello WOrld!");
+        Cash cash = calculator.fillMap(WORD_WITH_UPPER_KEYS);
         String actual = formatter.charFormatter(cash);
         assertEquals(COUNT_CHARS_WITH_UPPER_KEYS, actual);
     }
 
     @Test
     void countCharsWithDigitsAndSymbols() {
-        Cash cash = calculator.fillMap("Hello1$$ WO1211)rld!");
+        Cash cash = calculator.fillMap(WORD_WITH_DIGITS_AND_SYMBOLS);
         String actual = formatter.charFormatter(cash);
-        assertEquals(CHAR_WITH_DIGITS_AND_SYMBOLS, actual);
+        assertEquals(CHARS_WITH_DIGITS_AND_SYMBOLS, actual);
     }
 
     @Test
     void countCharsWithLowerKeys() {
-        Cash cash = calculator.fillMap("hello world!");
+        Cash cash = calculator.fillMap(WORD_WITH_LOWER_KEYS);
         String actual = formatter.charFormatter(cash);
         assertEquals(COUNT_CHARS_WITH_LOWER_KEYS, actual);
     }
 
     @Test
     void countCharsTwoTimesWithDifferentInput() {
-        calculator.fillMap("hello world!");
-        Cash cash = calculator.fillMap("Hello1$$ WO1211)rld!");
+        calculator.fillMap(WORD_WITH_LOWER_KEYS);
+        Cash cash = calculator.fillMap(WORD_WITH_DIGITS_AND_SYMBOLS);
         String actual = formatter.charFormatter(cash);
-        assertEquals(CHAR_WITH_DIGITS_AND_SYMBOLS, actual);
+        assertEquals(CHARS_WITH_DIGITS_AND_SYMBOLS, actual);
     }
 }
