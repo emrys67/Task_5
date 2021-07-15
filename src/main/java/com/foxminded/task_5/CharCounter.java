@@ -14,7 +14,7 @@ public class CharCounter {
 
     public String countChar(String word) {
         fillMap(word);
-        return printCharCount();
+        return charFormatter();
     }
 
     private void fillMap(String word) {
@@ -38,7 +38,7 @@ public class CharCounter {
         }
     }
 
-    private String printCharCount() {
+    private String charFormatter() {
         var wordOut = new StringBuilder();
         var buffer = "";
         for (var i = 0; i < cashWord.length(); i++) {
