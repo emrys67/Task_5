@@ -1,11 +1,11 @@
 package com.foxminded.task_5;
 
-public class CharCount {
+public class CharCounter {
     private Calculator calculator;
     private Formatter formatter;
     private Cash cash;
 
-    public CharCount(Calculator calculator, Formatter formatter) {
+    public CharCounter(Calculator calculator, Formatter formatter) {
         this.calculator = calculator;
         this.formatter = formatter;
     }

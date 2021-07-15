@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
         Formatter formatter = new Formatter();
-        CharCount count = new CharCount(calculator, formatter);
+        CharCounter count = new CharCounter(calculator, formatter);
         System.out.println(count.buildString("Hello1$$ WO1211)rld!"));
     }
 }
