@@ -36,6 +36,6 @@ public class CharCounterTest {
         when(calculator.fillMap(INPUT_WORD)).thenReturn(cash);
         charCounter.buildString(INPUT_WORD);
         charCounter.buildString(INPUT_WORD);
-        verify(calculator, atMost(1)).fillMap(INPUT_WORD);
+        verify(calculator, times(1)).fillMap(INPUT_WORD);
     }
 }
