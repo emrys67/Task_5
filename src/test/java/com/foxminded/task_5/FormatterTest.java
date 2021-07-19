@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FormatterTest {
-    private Formatter formatter;
-    private Calculator calculator;
     private static final String CHARS_WITH_DIGITS_AND_SYMBOLS = """
             Hello1$$ WO1211)rld!
             "h" - 1
@@ -54,6 +52,8 @@ public class FormatterTest {
     private static final String WORD_WITH_LOWER_KEYS = "hello world!";
     private static final String CHARS_NULL = "Null input is not allowed";
     private static final String EMPTY = "";
+    private Formatter formatter;
+    private Calculator calculator;
 
     @BeforeEach
     void setUp() {

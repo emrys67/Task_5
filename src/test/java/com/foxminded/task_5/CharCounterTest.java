@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.mockito.Mockito.*;
 
@@ -14,13 +15,13 @@ import static org.mockito.Mockito.*;
 public class CharCounterTest {
     private final static String INPUT_WORD_UPPER_KEYS = "HELL";
     private final static String INPUT_WORD_LOWER_KEYS = "hell";
+    @Mock
+    Calculator calculator;
     private CharCounter charCounter;
     private Formatter formatter;
     private Cash cashLower;
     private Cash cashUpper;
-    private HashMap<Character, Integer> cashMap;
-    @Mock
-    Calculator calculator;
+    private Map<Character, Integer> cashMap;
 
     @BeforeEach
     void setUp() {

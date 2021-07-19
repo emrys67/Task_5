@@ -1,8 +1,8 @@
 package com.foxminded.task_5;
 
 public class CharCounter {
-    private Calculator calculator;
-    private Formatter formatter;
+    private final Calculator calculator;
+    private final Formatter formatter;
     private Cash cash;
 
     public CharCounter(Calculator calculator, Formatter formatter) {
@@ -16,9 +16,5 @@ public class CharCounter {
         }
         cash = calculator.fillMap(word);
         return formatter.charFormatter(cash);
-    }
-
-    public Cash getCash() {
-        return cash;
     }
 }

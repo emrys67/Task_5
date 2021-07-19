@@ -4,18 +4,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
-    private Calculator calculator;
     private static final String CHARS_NULL = "Null input is not allowed";
     private static final String EMPTY = "";
     private static final String CHAR_WITH_DIGITS_AND_SYMBOLS_UPPER_KEYS = "Hello1$$ WO11rld";
     private static final String CHAR_WITH_DIGITS_AND_SYMBOLS_LOWER_KEYS = "hello1$$ wo11rld";
     private static final String CHARS_WITH_UPPER_KEYS = "Hello WOrld!";
     private static final String CHARS_WITH_LOWER_KEYS = "hello world!";
+    private Calculator calculator;
 
     @BeforeEach
     void setUp() {
@@ -25,7 +26,7 @@ public class CalculatorTest {
     @Test
     void countCharsEmpty() {
         Cash actual = calculator.fillMap(EMPTY);
-        HashMap<Character, Integer> cashMap = new HashMap<>();
+        Map<Character, Integer> cashMap = new HashMap<>();
         Cash expected = new Cash(cashMap, EMPTY);
         assertEquals(expected, actual);
     }
@@ -42,7 +43,7 @@ public class CalculatorTest {
     @Test
     void countCharsSWithUpperKeys() {
         Cash actual = calculator.fillMap(CHARS_WITH_UPPER_KEYS);
-        HashMap<Character, Integer> cashMap = new HashMap<>();
+        Map<Character, Integer> cashMap = new HashMap<>();
         cashMap.put(' ', 1);
         cashMap.put('!', 1);
         cashMap.put('h', 1);
@@ -59,7 +60,7 @@ public class CalculatorTest {
     @Test
     void countCharsWithDigitsAndSymbols() {
         Cash actual = calculator.fillMap(CHAR_WITH_DIGITS_AND_SYMBOLS_UPPER_KEYS);
-        HashMap<Character, Integer> cashMap = new HashMap<>();
+        Map<Character, Integer> cashMap = new HashMap<>();
         cashMap.put(' ', 1);
         cashMap.put('h', 1);
         cashMap.put('e', 1);
@@ -77,7 +78,7 @@ public class CalculatorTest {
     @Test
     void countCharsWithLowerKeys() {
         Cash actual = calculator.fillMap(CHARS_WITH_LOWER_KEYS);
-        HashMap<Character, Integer> cashMap = new HashMap<>();
+        Map<Character, Integer> cashMap = new HashMap<>();
         cashMap.put(' ', 1);
         cashMap.put('!', 1);
         cashMap.put('h', 1);
@@ -95,7 +96,7 @@ public class CalculatorTest {
     void countCharsTwoTimesWithDifferentInput() {
         calculator.fillMap(CHAR_WITH_DIGITS_AND_SYMBOLS_LOWER_KEYS);
         Cash actual = calculator.fillMap(CHARS_WITH_LOWER_KEYS);
-        HashMap<Character, Integer> cashMap = new HashMap<>();
+        Map<Character, Integer> cashMap = new HashMap<>();
         cashMap.put(' ', 1);
         cashMap.put('!', 1);
         cashMap.put('h', 1);

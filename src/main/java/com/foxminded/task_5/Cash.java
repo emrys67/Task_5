@@ -1,18 +1,18 @@
 package com.foxminded.task_5;
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Cash {
-    private HashMap<Character, Integer> cashMap;
-    private String cashWord;
+    private final Map<Character, Integer> cashMap;
+    private final String cashWord;
 
-    public Cash(HashMap<Character, Integer> cashMap, String cashWord) {
+    public Cash(Map<Character, Integer> cashMap, String cashWord) {
         this.cashMap = cashMap;
         this.cashWord = cashWord;
     }
 
-    public HashMap<Character, Integer> getCashMap() {
+    public Map<Character, Integer> getCashMap() {
         return cashMap;
     }
 
