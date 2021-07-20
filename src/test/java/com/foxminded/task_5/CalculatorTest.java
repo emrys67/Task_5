@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
-    private static final String CHARS_NULL = "Null input is not allowed";
+    private static final String CHARS_NULL_OR_EMPTY = "Null and empty input is not allowed";
     private static final String EMPTY = "";
     private static final String CHAR_WITH_DIGITS_AND_SYMBOLS_UPPER_KEYS = "Hello1$$ WO11rld";
     private static final String CHAR_WITH_DIGITS_AND_SYMBOLS_LOWER_KEYS = "hello1$$ wo11rld";
@@ -25,10 +25,11 @@ public class CalculatorTest {
 
     @Test
     void countCharsEmpty() {
-        Cash actual = calculator.fillMap(EMPTY);
-        Map<Character, Integer> cashMap = new HashMap<>();
-        Cash expected = new Cash(cashMap, EMPTY);
-        assertEquals(expected, actual);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculator.fillMap(EMPTY);
+        });
+        String actual = exception.getMessage();
+        assertEquals(CHARS_NULL_OR_EMPTY, actual);
     }
 
     @Test
@@ -37,7 +38,7 @@ public class CalculatorTest {
             calculator.fillMap(null);
         });
         String actual = exception.getMessage();
-        assertEquals(CHARS_NULL, actual);
+        assertEquals(CHARS_NULL_OR_EMPTY, actual);
     }
 
     @Test

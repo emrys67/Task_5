@@ -50,7 +50,7 @@ public class FormatterTest {
     private static final String WORD_WITH_DIGITS_AND_SYMBOLS = "Hello1$$ WO1211)rld!";
     private static final String WORD_WITH_UPPER_KEYS = "Hello WOrld!";
     private static final String WORD_WITH_LOWER_KEYS = "hello world!";
-    private static final String CHARS_NULL = "Null input is not allowed";
+    private static final String CHARS_NULL_OR_EMPTY = "Null input is not allowed";
     private static final String EMPTY = "";
     private Formatter formatter;
     private Calculator calculator;
@@ -64,9 +64,11 @@ public class FormatterTest {
 
     @Test
     void countCharsEmpty() {
-        Cash cash = calculator.fillMap(EMPTY);
-        String actual = formatter.charFormatter(cash);
-        assertEquals(EMPTY, actual);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            formatter.charFormatter(calculator.fillMap(EMPTY));
+        });
+        String actual = exception.getMessage();
+        assertEquals(CHARS_NULL_OR_EMPTY, actual);
     }
 
     @Test
@@ -75,7 +77,7 @@ public class FormatterTest {
             formatter.charFormatter(calculator.fillMap(null));
         });
         String actual = exception.getMessage();
-        assertEquals(CHARS_NULL, actual);
+        assertEquals(CHARS_NULL_OR_EMPTY, actual);
     }
 
     @Test

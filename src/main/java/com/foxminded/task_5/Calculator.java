@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Calculator {
-    private static final String ARGUMENT_EXCEPTION_TEXT = "Null input is not allowed";
+    private static final String ARGUMENT_EXCEPTION_TEXT = "Null and empty input is not allowed";
 
     public Cash fillMap(String word) {
-        if (word == null) {
+        if (word == null || word.isEmpty()) {
             throw new IllegalArgumentException(ARGUMENT_EXCEPTION_TEXT);
         }
         Map<Character, Integer> cashMap = new HashMap<>();
