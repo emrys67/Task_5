@@ -50,7 +50,7 @@ public class FormatterTest {
     private static final String WORD_WITH_DIGITS_AND_SYMBOLS = "Hello1$$ WO1211)rld!";
     private static final String WORD_WITH_UPPER_KEYS = "Hello WOrld!";
     private static final String WORD_WITH_LOWER_KEYS = "hello world!";
-    private static final String CHARS_NULL_OR_EMPTY = "Null input is not allowed";
+    private static final String CHARS_NULL_OR_EMPTY = "Null and empty input is not allowed";
     private static final String EMPTY = "";
     private Formatter formatter;
     private Calculator calculator;
