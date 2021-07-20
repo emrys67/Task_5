@@ -1,6 +1,7 @@
 package com.foxminded.task_5;
 
-import java.util.Locale;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Formatter {
     private static final String QUOTE = "\"";
@@ -9,22 +10,23 @@ public class Formatter {
     private static final String NEW_LINE = "\n";
 
     public String charFormatter(Cash cash) {
+        List<Character> list = getUniqueCharacters(cash);
+        return buildString(cash, list);
+    }
+
+    private List<Character> getUniqueCharacters(Cash cash) {
+        String cashWord = cash.getCashWord().toLowerCase();
+        List<Character> word = cashWord.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+        return word.stream()
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    private String buildString(Cash cash, List<Character> list) {
         var wordOut = new StringBuilder();
-        var buffer = "";
-        String cashWord = cash.getCashWord().toLowerCase(Locale.ROOT);
-        for (var i = 0; i < cashWord.length(); i++) {
-            if (!buffer.contains(String.valueOf(cashWord.charAt(i)))) {
-                buffer += cashWord.charAt(i);
-            }
-        }
-        for (var i = 0; i < buffer.length(); i++) {
-            wordOut.append(QUOTE + buffer.charAt(i));
-            wordOut.append(QUOTE + SPACE + DASH + SPACE);
-            wordOut.append(cash.getCashMap().get(buffer.charAt(i)) + NEW_LINE);
-        }
-        if (!cash.getCashWord().isEmpty()) {
-            wordOut.insert(0, cash.getCashWord() + NEW_LINE);
-        }
+        wordOut.append(cash.getCashWord() + NEW_LINE);
+        list.stream()
+                .forEach(symbol -> wordOut.append(QUOTE + symbol + QUOTE + SPACE + DASH + SPACE + cash.getCashMap().get(symbol) + NEW_LINE));
         return wordOut.toString();
     }
 

@@ -19,12 +19,12 @@ public class CalculatorTest {
     private Calculator calculator;
 
     @BeforeEach
-    void setUp() {
+    private void setUp() {
         calculator = new Calculator();
     }
 
     @Test
-    void countCharsEmpty() {
+    public void countCharsEmpty() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             calculator.fillMap(EMPTY);
         });
@@ -33,7 +33,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void countCharsNull() {
+    public void countCharsNull() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             calculator.fillMap(null);
         });
@@ -42,7 +42,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void countCharsSWithUpperKeys() {
+    public void countCharsSWithUpperKeys() {
         Cash actual = calculator.fillMap(CHARS_WITH_UPPER_KEYS);
         Map<Character, Integer> cashMap = new HashMap<>();
         cashMap.put(' ', 1);
@@ -59,7 +59,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void countCharsWithDigitsAndSymbols() {
+    public void countCharsWithDigitsAndSymbols() {
         Cash actual = calculator.fillMap(CHAR_WITH_DIGITS_AND_SYMBOLS_UPPER_KEYS);
         Map<Character, Integer> cashMap = new HashMap<>();
         cashMap.put(' ', 1);
@@ -77,7 +77,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void countCharsWithLowerKeys() {
+    public void countCharsWithLowerKeys() {
         Cash actual = calculator.fillMap(CHARS_WITH_LOWER_KEYS);
         Map<Character, Integer> cashMap = new HashMap<>();
         cashMap.put(' ', 1);
@@ -94,7 +94,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void countCharsTwoTimesWithDifferentInput() {
+    public void countCharsTwoTimesWithDifferentInput() {
         calculator.fillMap(CHAR_WITH_DIGITS_AND_SYMBOLS_LOWER_KEYS);
         Cash actual = calculator.fillMap(CHARS_WITH_LOWER_KEYS);
         Map<Character, Integer> cashMap = new HashMap<>();

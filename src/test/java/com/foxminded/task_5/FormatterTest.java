@@ -56,14 +56,14 @@ public class FormatterTest {
     private Calculator calculator;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         formatter = new Formatter();
         calculator = new Calculator();
 
     }
 
     @Test
-    void countCharsEmpty() {
+    public void countCharsEmpty() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             formatter.charFormatter(calculator.fillMap(EMPTY));
         });
@@ -72,7 +72,7 @@ public class FormatterTest {
     }
 
     @Test
-    void countCharsNull() {
+    public void countCharsNull() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             formatter.charFormatter(calculator.fillMap(null));
         });
@@ -81,28 +81,28 @@ public class FormatterTest {
     }
 
     @Test
-    void countCharsSWithUpperKeys() {
+    public void countCharsSWithUpperKeys() {
         Cash cash = calculator.fillMap(WORD_WITH_UPPER_KEYS);
         String actual = formatter.charFormatter(cash);
         assertEquals(COUNT_CHARS_WITH_UPPER_KEYS, actual);
     }
 
     @Test
-    void countCharsWithDigitsAndSymbols() {
+    public void countCharsWithDigitsAndSymbols() {
         Cash cash = calculator.fillMap(WORD_WITH_DIGITS_AND_SYMBOLS);
         String actual = formatter.charFormatter(cash);
         assertEquals(CHARS_WITH_DIGITS_AND_SYMBOLS, actual);
     }
 
     @Test
-    void countCharsWithLowerKeys() {
+    public void countCharsWithLowerKeys() {
         Cash cash = calculator.fillMap(WORD_WITH_LOWER_KEYS);
         String actual = formatter.charFormatter(cash);
         assertEquals(COUNT_CHARS_WITH_LOWER_KEYS, actual);
     }
 
     @Test
-    void countCharsTwoTimesWithDifferentInput() {
+    public void countCharsTwoTimesWithDifferentInput() {
         calculator.fillMap(WORD_WITH_LOWER_KEYS);
         Cash cash = calculator.fillMap(WORD_WITH_DIGITS_AND_SYMBOLS);
         String actual = formatter.charFormatter(cash);

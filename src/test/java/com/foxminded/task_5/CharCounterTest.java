@@ -24,7 +24,7 @@ public class CharCounterTest {
     private Map<Character, Integer> cashMap;
 
     @BeforeEach
-    void setUp() {
+    private void setUp() {
         cashMap = new HashMap<>();
         cashMap.put('h', 1);
         cashMap.put('e', 1);
@@ -40,7 +40,7 @@ public class CharCounterTest {
     }
 
     @Test
-    void cashReturnedIfSimilarInput() {
+    public void cashReturnedIfSimilarInput() {
         when(calculator.fillMap(INPUT_WORD_LOWER_KEYS)).thenReturn(cashLower);
         charCounter.buildString(INPUT_WORD_LOWER_KEYS);
         charCounter.buildString(INPUT_WORD_LOWER_KEYS);
@@ -48,7 +48,7 @@ public class CharCounterTest {
     }
 
     @Test
-    void cashNotReturnedIfSimilarInputLowerAndUpperKeys() {
+    public void cashNotReturnedIfSimilarInputLowerAndUpperKeys() {
         when(calculator.fillMap(INPUT_WORD_LOWER_KEYS)).thenReturn(cashLower);
         when(calculator.fillMap(INPUT_WORD_UPPER_KEYS)).thenReturn(cashUpper);
         charCounter.buildString(INPUT_WORD_LOWER_KEYS);
